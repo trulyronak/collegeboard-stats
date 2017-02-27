@@ -47,11 +47,12 @@ var div = d3.select(target)
     		.style("opacity", 0);
 
 // Load in my states data!
-d3.csv("../csv/apscoresbystate.csv", function(data) {
+//github pages bug, need to find better solution
+d3.csv("https://ronakshah.net/collegeboard-stats/csv/apscoresbystate.csv", function(data) {
     color.domain([0,1]); // setting the range of the input data
 
     // Load GeoJSON data and merge with states data
-    d3.json("../json/us-states.json", function(json) {
+    d3.json("https://ronakshah.net/collegeboard-stats/json/us-states.json", function(json) {
 
         // Loop through each state data value in the .csv file
         for (var i = 0; i < data.length; i++) {
