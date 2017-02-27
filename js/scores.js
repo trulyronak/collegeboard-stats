@@ -28,9 +28,9 @@ let target = "body"
 		
 // Define linear scale for output
 var color = d3.scale.linear().
-        range(["rgb(102,179,255)","rgb(0,128,255)","rgb(0,102,204)","rgb(0,77,153)","rgb(0,51,102)"]);
+        range(["rgb(211,47,47)","rgb(68, 138, 255)"]);
 
-var legendText = ["0-10,000", "10,000-50,000", "50,000-100,000", "100,000-150,000", "150,000+"];
+var legendText = ["Below 3", "Above 3"];
 
 //Create SVG element and append map to the SVG
 var svg = d3.select(target)
@@ -47,11 +47,11 @@ var div = d3.select(target)
     		.style("opacity", 0);
 
 // Load in my states data!
-d3.csv("participationdata.csv", function(data) {
-    color.domain([0,1,2,3,4]); // setting the range of the input data
+d3.csv("../csv/apscoresbystate.csv", function(data) {
+    color.domain([0,1]); // setting the range of the input data
 
     // Load GeoJSON data and merge with states data
-    d3.json("us-states.json", function(json) {
+    d3.json("../json/us-states.json", function(json) {
 
         // Loop through each state data value in the .csv file
         for (var i = 0; i < data.length; i++) {
@@ -60,7 +60,7 @@ d3.csv("participationdata.csv", function(data) {
             var dataState = data[i].state;
 
             // Grab data value 
-            var dataValue = data[i].participation;
+            var dataValue = data[i].percentage;
 
             // Find the corresponding state inside the GeoJSON
             for (var j = 0; j < json.features.length; j++)  {
@@ -69,7 +69,7 @@ d3.csv("participationdata.csv", function(data) {
                 if (dataState == jsonState) {
 
                     // Copy the data value into the JSON
-                    json.features[j].properties.participated = dataValue; 
+                    json.features[j].properties.percentage = dataValue; 
 
                     // Stop looking through the JSON
                     break;
@@ -88,26 +88,17 @@ d3.csv("participationdata.csv", function(data) {
             .style("fill", function(d) {
 
             // Get data value
-            var value = d.properties.participated;
+            var value = d.properties.percentage;
 
             if (value) {
             //If value exists…
-                value = parseInt(value.replace(",",""));
+                value = parseFloat(value.replace("%",""));
                 console.log(value);
-                if (value < 10000) {
-                    return color(0);
-                }
-                else if (value < 50000) {
-                    return color(1);
-                }
-                else if (value < 100000) {
-                    return color(2);
-                }
-                else if (value < 150000) {
-                    return color(3);
+                if (value < 50) {
+                    return "rgb(211,47,47)";
                 }
                 else {
-                    return color(4);
+                    return "rgb(68, 138, 255)";
                 }
             }
             else {
@@ -120,7 +111,7 @@ d3.csv("participationdata.csv", function(data) {
                 div.transition()        
                    .duration(200)      
                    .style("opacity", .9);      
-                   div.text(d.properties.participated)
+                   div.text(d.properties.percentage)
                    .style("left", (d3.event.pageX) + "px")     
                    .style("top", (d3.event.pageY - 28) + "px");    
             })
@@ -134,7 +125,7 @@ d3.csv("participationdata.csv", function(data) {
         
         /*
         // Map the cities I have lived in!
-        d3.csv("cities-lived.csv", function(data) {
+        d3.csv("../csv/cities-lived.csv", function(data) {
 
         svg.selectAll("circle")
             .data(data)
