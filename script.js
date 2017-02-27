@@ -11,6 +11,7 @@ Mike Bostock, Pie Chart Legend
 http://bl.ocks.org/mbostock/3888852  */
 
 		
+
 //Width and height of map
 var width = 960;
 var height = 500;
@@ -23,7 +24,7 @@ var projection = d3.geo.albersUsa()
 // Define path generator
 var path = d3.geo.path()               // path generator that will convert GeoJSON to SVG paths
 		  	 .projection(projection);  // tell path generator to use albersUsa projection
-
+let target = "body"
 		
 // Define linear scale for output
 var color = d3.scale.linear().
@@ -32,20 +33,22 @@ var color = d3.scale.linear().
 var legendText = ["0-10,000", "10,000-50,000", "50,000-100,000", "100,000-150,000", "150,000+"];
 
 //Create SVG element and append map to the SVG
-var svg = d3.select("body")
-			.append("svg")
-			.attr("width", width)
-			.attr("height", height);
+var svg = d3.select(target)
+        .append("div")
+        .attr("id", "svg")
+        .append("svg")
+        .attr("viewBox", "0 0 " + width + " " + height )
+        .attr("preserveAspectRatio", "xMinYMin");
         
 // Append Div for tooltip to SVG
-var div = d3.select("body")
+var div = d3.select(target)
 		    .append("div")   
     		.attr("class", "tooltip")               
     		.style("opacity", 0);
 
 // Load in my states data!
-d3.csv("stateslived.csv", function(data) {
-    color.domain([0,1,2,3]); // setting the range of the input data
+d3.csv("participationdata.csv", function(data) {
+    color.domain([0,1,2,3,4]); // setting the range of the input data
 
     // Load GeoJSON data and merge with states data
     d3.json("us-states.json", function(json) {
@@ -169,26 +172,27 @@ d3.csv("stateslived.csv", function(data) {
         });  
         */
         // Modified Legend Code from Mike Bostock: http://bl.ocks.org/mbostock/3888852
-        var legend = d3.select("body").append("svg")
+        var legend = d3.select(target).append("svg")
                         .attr("class", "legend")
                         .attr("width", 140)
                         .attr("height", 200)
                         .selectAll("g")
-                        .data(color.domain().slice().reverse())
+                        .data(color.domain().slice())
                         .enter()
                         .append("g")
-                        .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
+                        .attr("transform", function(d, i) { return "translate(10," + i * 25 + ")"; });
 
             legend.append("rect")
-                  .attr("width", 18)
-                  .attr("height", 18)
+                  .attr("width", 28)
+                  .attr("height", 28)
                   .style("fill", color);
 
             legend.append("text")
                   .data(legendText)
-                  .attr("x", 24)
+                  .attr("class","legend-text")
+                  .attr("x", 40)
                   .attr("y", 9)
-                  .attr("dy", ".35em")
+                  .attr("dy", ".65em")
                   .text(function(d) { return d; });
         });
 

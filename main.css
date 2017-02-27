@@ -1,4 +1,7 @@
-
+#svg {
+    width: 90%;
+    height: auto;
+}
 /* On mouse hover, lighten state color */
 path:hover {
 	fill-opacity: .7;
@@ -8,9 +11,12 @@ path:hover {
 div.tooltip {   
  	position: absolute;           
 	text-align: center;           
-	width: 60px;                  
-	height: 28px;                 
-	padding: 2px;             
+    display: inline-block;
+    padding-left: 10px;
+    padding-right: 10px;
+	height: 18px;     
+    padding-top: 2px;
+    line-height: 14px;
 	font: 12px sans-serif;        
 	background: white;   
 	border: 0px;      
@@ -20,12 +26,24 @@ div.tooltip {
         
 /* Legend Font Style */
 body {
-	font: 11px sans-serif;
+	font: 15px sans-serif;
 }
         
 /* Legend Position Style */
 .legend {
-	position:absolute;
-	left:800px;
-	top:350px;
+	position: fixed;
+    bottom: 1%;
+    right: 1%;
+    height: 30vh;
+    width: 20vw;
+}
+
+@media screen and (max-width: 900px) {
+    .legend {
+        position: fixed;
+        bottom: 10%;
+
+        height: 30vh;
+        width: 50vw;
+    }
 }
