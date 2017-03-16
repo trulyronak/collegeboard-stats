@@ -7,7 +7,7 @@
 
     <link href="css/main.css" type="text/css" rel="stylesheet" />
     <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, user-scalable=no">
+    <meta name="viewport" content="width=device-width, user-scalable=no">
 </head>
 
 
@@ -31,34 +31,36 @@
 
         <div class="tab-content ">
             <div class="tab-pane active" id="1">
-                <h3>Looking at all the data</h3>
+                <h3>Conclusion</h3>
                 <h4>
                     Through analyzing both maps, I found that there was a inverse correlation between states with low AP enrollment and states with high AP Scores.
                     <br><br>
                     <p>
                         I started off by looking at the participation map. Noticing that the majority of the nation had low AP Participation, I wondered what scores these states were getting. Resultingly, I created another map to analyze the scores. College Board however, does not give specific scores for each state - instead they simply give percentages of students that scored a 3 or above (passing). Putting the two maps side by side, I noticed that many of the states with low populations were scoring high. Intrigued, I decided to combine the two maps together.
-                        <br><br>
-                        In this map, I plotted all states with <b>low</b> participation and <b>low scores</b> to be <span class="dark-blue">dark blue</span>, and states with <b>low</b> participation and <b>high scores</b> to be <span class="light-blue">light blue</span>. For the <b>high</b> population states, I used <span class="green">green</span> to represent high scoring states and <span class="violet">violet</span> for <b>high</b> participation states with low scores.
-                        
-                    </p>
-                    
-                    <div id="overview-map"></div>
+                        <br><br> In this map, I plotted all states with <b>low</b> participation and <b>low scores</b> to be <span class="dark-blue">dark blue</span>, and states with <b>low</b> participation and <b>high scores</b> to be <span class="light-blue">light blue</span>. For the <b>high</b> population states, I used <span class="green">green</span> to represent high scoring states and <span class="violet">violet</span> for <b>high</b> participation states with low scores.
 
+                    </p>
                 </h4>
+                <div id="overview-map"></div>
+
+
             </div>
             <div class="tab-pane" id="2">
                 <h3>Map of AP Participation, by State</h3>
-                <p>
-                    Here I categorized each state by its respective AP Participation, using a scale from <span class="light-blue">light blue</span> to <span class="dark-blue">dark blue</span>.
-                </p>
-                
+                <h4>
+                    <p>
+                        Here I categorized each state by its respective AP Participation, using a scale from <span class="light-blue">light blue</span> to <span class="dark-blue">dark blue</span>.
+                    </p>
+                </h4>
                 <div id="participation-map"></div>
             </div>
             <div class="tab-pane" id="3">
                 <h3>Map of AP Score Distribution, by State</h3>
-                <p>
-                    Here I categorized each state by its respective AP Scores, with states that have <b>above a 3</b> having a <span class="light-blue">light blue</span> background color and states that have <b>below a 3</b> with a <span class="dark-blue">dark blue</span> background color.
-                </p>
+                <h4>
+                    <p>
+                        Here I categorized each state by its respective AP Scores, with states that have <b>above a 3</b> having a <span class="light-blue">light blue</span> background color and states that have <b>below a 3</b> with a <span class="dark-blue">dark blue</span> background color.
+                    </p>
+                </h4>
                 <div id="scores-map"></div>
 
             </div>

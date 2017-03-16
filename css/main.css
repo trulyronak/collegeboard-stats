@@ -25,7 +25,10 @@ body {
 path:hover {
 	fill-opacity: .7;
 }
-
+p,h1,h2,h3,h4,h5,h6,span{
+    font-family: 'Roboto', sans-serif !important;
+    font-weight: 300 !important;
+}
 /* Style for Custom Tooltip */
 div.tooltip {   
  	position: absolute;           
@@ -40,21 +43,29 @@ div.tooltip {
 	background: white;   
 	border: 0px;      
 	border-radius: 8px;           
-	pointer-events: none;         
+	pointer-events: none;
+    font-family: 'Roboto', sans-serif !important;
+    font-weight: 300 !important;
 }
         
 /* Legend Font Style */
 body {
 	font: 15px sans-serif;
+    font-family: 'Roboto', sans-serif !important;
+    font-weight: 300 !important;
 }
         
 /* Legend Position Style */
 .legend {
+    font-family: 'Roboto', sans-serif !important;
+    font-weight: 300 !important;
 	position: fixed;
-    bottom: 1%;
+    bottom: 0%;
     right: 1%;
     height: 30vh;
     width: 20vw;
+    background-color: white;
+    border-radius: 15px;
 }
 
 @media screen and (max-width: 900px) {
