@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400');
 body {
-    font-family: 'Roboto', sans-serif;
-    font-weight: 300;
+    font-family: 'Roboto', sans-serif !important;
+    font-weight: 300 !important;
 }
 /*  Colors  */
 .violet {
@@ -14,7 +14,7 @@ body {
     color: rgb(0,51,102);
 }
 .green {
-    color: lightgreen;
+    color: #008B00;
 }
 
 #svg {
